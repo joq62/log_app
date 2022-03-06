@@ -1,0 +1,10 @@
+{application,log_app,
+             [{description,"An OTP application"},
+              {vsn,"0.1.0"},
+              {registered,[]},
+              {mod,{log_app_app,[]}},
+              {applications,[kernel,stdlib]},
+              {env,[]},
+              {modules,[log,log_app_app,log_app_sup,parse]},
+              {licenses,["Apache 2.0"]},
+              {links,[]}]}.
