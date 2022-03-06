@@ -9,8 +9,7 @@ all:
 	rm -rf _build;
 	erlc -o test_ebin test/*.erl;
 	erl -pa test_ebin -pa ebin -sname test -run basic_eunit start -setcookie test_cookie -config config/sys;
-	rm -rf  catalog host_specs deployment_specs logs;
-	rm -rf ebin;
+	rm -rf  catalog host_specs deployment_specs logs;	
 	echo Done
 check:
 	rebar3 check
