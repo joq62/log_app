@@ -4,8 +4,6 @@ all:
 	rm -rf _build test_ebin;
 	mkdir test_ebin;	
 	rebar3 compile;	
-	erlc -o test_ebin test/*.erl;	
-	erl -pa _build/default/lib/*/ebin -pa test_ebin -sname test -run basic_eunit start -setcookie test_cookie -config config/sys;
 	rm -rf _build test_ebin logs;
 	echo Done
 check:
