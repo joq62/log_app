@@ -26,7 +26,7 @@ start()->
     ok=application:start(log_app),
     ok=t1_test(),
     ok=t2_test(),
-    timer:sleep(2000),
+    
     ok=t22_test(),
 %   ok=test3(),
  %   ok=test4(),
@@ -46,10 +46,13 @@ t1_test()->
     ok.
 t2_test()->
     ok=test2(),
-    ok=log:update(),
+  
+    timer:sleep(1000),
     ok.
 
 t22_test()->
+    timer:sleep(1000),
+    log:update(),
     io:format("log:read(3) ~p~n",[{log:read(3),?MODULE,?FUNCTION_NAME,?LINE}]),
     io:format("log:error(3) ~p~n",[{log:error(3),?MODULE,?FUNCTION_NAME,?LINE}]),
     io:format("log:critical(3) ~p~n",[{log:critical(3),?MODULE,?FUNCTION_NAME,?LINE}]),
@@ -136,7 +139,9 @@ loop(0)->
     ok;
 loop(N) ->
     ok=log(node(),alert,?MODULE,?FUNCTION_NAME,?LINE,"what 1","alert ",integer_to_list(N),node(),pid_to_list(self())),
-    loop(N -1).
+    ok=log(node(),error,?MODULE,?FUNCTION_NAME,?LINE,"what 1","error ",integer_to_list(N),node(),pid_to_list(self())),
+    ok=log(node(),critical,?MODULE,?FUNCTION_NAME,?LINE,"what 1","critical ",integer_to_list(N),node(),pid_to_list(self())),
+    loop(N-1).
 %% --------------------------------------------------------------------
 %% Function:start/0 
 %% Description: Initiate the eunit tests, set upp needed processes etc
