@@ -1,4 +1,1 @@
-[{<<"flatlog">>,
-  {git,"git://github.com/ferd/flatlog.git",
-       {ref,"553ef2b09c8a3d2b02c7395251cee397f7cb3839"}},
-  0}].
+[].
